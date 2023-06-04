@@ -15,15 +15,27 @@ public class MenuNav : MonoBehaviour
     [SerializeField] Image enterPlayerName;
     [SerializeField] TMP_InputField input;
     public static string PlayerName;
-    private readonly SceneChange m_SceneChange = new SceneChange();
+    public static int CurrentIndex;
+
+    public static void SceneChange()
+    {
+        CurrentIndex = 0;
+        
+        EventSystem.current.gameObject.SetActive(false);
+        if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            SceneManager.LoadScene(0);
+            return;
+        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     
     private void SubmitName(string inputName)
     {
         if (!(inputName.Length > 8))
         {
             PlayerName = inputName;
-            Debug.Log(PlayerName);
-            m_SceneChange.Execute();
+            SceneChange();
             return;
         }
 
