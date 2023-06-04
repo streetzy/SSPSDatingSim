@@ -56,6 +56,16 @@ public class MenuNav : MonoBehaviour
         enterPlayerName.gameObject.SetActive(true);
     }
 
+    public void LoadGame()
+    {
+        if (PlayerName == null) return;
+
+        CurrentIndex = Save.SaveTemplate.currentDialogueIndex;
+        
+        EventSystem.current.gameObject.SetActive(false);
+        SceneManager.LoadScene(Save.SaveTemplate.currentSceneBuildIndex);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

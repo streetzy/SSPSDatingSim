@@ -49,6 +49,7 @@ public class Dialogue : MonoBehaviour
 
     private void EventManagerOnButtonClicked()
     {
+
         if (MenuNav.CurrentIndex == narratorTextList.Count - 1)
         {
 
