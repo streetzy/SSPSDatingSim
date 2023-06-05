@@ -364,6 +364,51 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &353217730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353217732}
+  - component: {fileID: 353217731}
+  m_Layer: 0
+  m_Name: Saver
+  m_TagString: saveTag
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &353217731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353217730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707a9465987dbb94f90db53e0fef1459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveFileName: SaveFile
+--- !u!4 &353217732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353217730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1096.6592, y: 548.9453, z: -4.117295}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &385442340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,7 +2025,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1205942165}
   - component: {fileID: 1205942167}
-  - component: {fileID: 1205942166}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -2004,19 +2048,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1205942166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205942164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 707a9465987dbb94f90db53e0fef1459, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveFileName: SaveFile
 --- !u!114 &1205942167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2042,6 +2073,7 @@ GameObject:
   - component: {fileID: 1345636287}
   - component: {fileID: 1345636286}
   - component: {fileID: 1345636285}
+  - component: {fileID: 1345636288}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -2164,6 +2196,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345636283}
   m_CullTransparentMesh: 1
+--- !u!114 &1345636288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345636283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ee2df21503d791498564b0586f5d736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1385276032
 GameObject:
   m_ObjectHideFlags: 0

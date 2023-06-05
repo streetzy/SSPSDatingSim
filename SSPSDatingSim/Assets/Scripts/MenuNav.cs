@@ -16,6 +16,7 @@ public class MenuNav : MonoBehaviour
     [SerializeField] TMP_InputField input;
     public static string PlayerName;
     public static int CurrentIndex;
+    public static bool loadedFlag;
 
     public static void SceneChange()
     {
@@ -59,6 +60,7 @@ public class MenuNav : MonoBehaviour
     public void LoadGame()
     {
         if (PlayerName == null) return;
+        loadedFlag = true;
 
         CurrentIndex = Save.SaveTemplate.currentDialogueIndex;
         

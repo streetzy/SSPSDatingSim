@@ -12,9 +12,9 @@ public class Dialogue : MonoBehaviour
     private List<GameObject> narratorTextList = new();
     private List<GameObject> dialogueTextList = new();
 
-    private void Start()
-    {
 
+    private void GetChildren()
+    {
         foreach (Transform child in narratorTexts.transform)
         {
             var componentText = child.gameObject.GetComponent<TextMeshProUGUI>().text;
@@ -35,10 +35,24 @@ public class Dialogue : MonoBehaviour
             narratorTextList.Add(child.gameObject);
         }
     }
-    
+    private void Start()
+    {
+        GetChildren();
+
+        if (MenuNav.loadedFlag)
+        {
+            narratorTextList[0].SetActive(false);
+            dialogueTextList[0].SetActive(false);
+            
+            narratorTextList[MenuNav.CurrentIndex].SetActive(true);
+            dialogueTextList[MenuNav.CurrentIndex].SetActive(true);
+            MenuNav.loadedFlag = false;
+        }
+    }
 
     private void OnEnable()
     {
+
         EventManager.ButtonClicked += EventManagerOnButtonClicked;
     }
 
@@ -46,13 +60,14 @@ public class Dialogue : MonoBehaviour
     {
         EventManager.ButtonClicked -= EventManagerOnButtonClicked;
     }
+    
 
     private void EventManagerOnButtonClicked()
     {
 
+
         if (MenuNav.CurrentIndex == narratorTextList.Count - 1)
         {
-
             narratorTextList[MenuNav.CurrentIndex].SetActive(false);
             dialogueTextList[MenuNav.CurrentIndex].SetActive(false);
             
@@ -64,9 +79,10 @@ public class Dialogue : MonoBehaviour
             dialogueTextList.Clear();
 
             MenuNav.SceneChange();
+            GetChildren();
             return;
         }
-        
+
         narratorTextList[MenuNav.CurrentIndex].SetActive(false);
         dialogueTextList[MenuNav.CurrentIndex].SetActive(false);
         

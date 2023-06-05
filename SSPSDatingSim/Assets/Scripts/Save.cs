@@ -26,25 +26,24 @@ public class Save : MonoBehaviour
 
         m_Path = Application.persistentDataPath + "/" + saveFileName + ".json";
 
-        if (!File.Exists(m_Path))
-        {
-            SaveTemplate defaultSaveTemplate = new SaveTemplate
-            {
-                currentSceneBuildIndex = EscapeMenu.buildIndexOfLastScene,
-                currentDialogueIndex = MenuNav.CurrentIndex,
-                playerName = MenuNav.PlayerName
-            };
 
-            string defaultJson = JsonUtility.ToJson(defaultSaveTemplate);
-            File.WriteAllText(m_Path, defaultJson);
-            SaveTemplate = defaultSaveTemplate;
-        }
-        else
-        {
-            string saveJson = File.ReadAllText(m_Path);
-            SaveTemplate = JsonUtility.FromJson<SaveTemplate>(saveJson);
-        }
     }
+
+    public void SaveToFile()
+    {
+        SaveTemplate defaultSaveTemplate = new SaveTemplate
+        {
+            currentSceneBuildIndex = EscapeMenu.buildIndexOfLastScene,
+            currentDialogueIndex = EscapeMenu.lastDialogueIndex,
+            playerName = MenuNav.PlayerName
+        };
+
+        string defaultJson = JsonUtility.ToJson(defaultSaveTemplate);
+        File.WriteAllText(m_Path, defaultJson);
+        SaveTemplate = defaultSaveTemplate;
+        
+    }
+
 }
 
 [System.Serializable]
