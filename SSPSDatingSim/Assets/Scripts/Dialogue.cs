@@ -6,13 +6,14 @@ using Unity.VisualScripting;
 public class Dialogue : MonoBehaviour
 {
 
+    [SerializeField] private GameObject loadingScreen;
+
     [SerializeField] private GameObject dialogueTexts;
     [SerializeField] private GameObject narratorTexts;
 
     private List<GameObject> narratorTextList = new();
     private List<GameObject> dialogueTextList = new();
-
-
+    
     private void GetChildren()
     {
         foreach (Transform child in narratorTexts.transform)
@@ -37,6 +38,8 @@ public class Dialogue : MonoBehaviour
     }
     private void Start()
     {
+        loadingScreen.SetActive(false);
+        
         GetChildren();
 
         if (MenuNav.loadedFlag)
@@ -68,6 +71,8 @@ public class Dialogue : MonoBehaviour
 
         if (MenuNav.CurrentIndex == narratorTextList.Count - 1)
         {
+            loadingScreen.SetActive(true);
+            
             narratorTextList[MenuNav.CurrentIndex].SetActive(false);
             dialogueTextList[MenuNav.CurrentIndex].SetActive(false);
             
@@ -87,6 +92,7 @@ public class Dialogue : MonoBehaviour
         dialogueTextList[MenuNav.CurrentIndex].SetActive(false);
         
         MenuNav.CurrentIndex++;
+        
         
         narratorTextList[MenuNav.CurrentIndex].SetActive(true);
         dialogueTextList[MenuNav.CurrentIndex].SetActive(true);
